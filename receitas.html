@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BeHealthy - Receitas Saudáveis</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="receitas.css">
+  <!-- EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function() {
+      emailjs.init({
+        publicKey: "U8T9o0N8ACsNPDqYT",
+      });
+    })();
+  </script>
+</head>
+<body id="top">
+  <div class="container">
+    <!-- SIDEBAR CORRIGIDA: Contato agora aponta para #contato da própria página -->
+    <aside class="sidebar">
+      <a href="inicio.html"><i class="fas fa-home"></i><span>Início</span></a>
+      <a href="beber.html"><i class="fas fa-tint"></i><span>Água</span></a>
+      <a href="receitas.html" class="active"><i class="fas fa-utensils"></i><span>Receitas</span></a>
+      <a href="inicio.html#quem-somos"><i class="fas fa-info-circle"></i><span>Quem Somos?</span></a>
+      <a href="#contato"><i class="fas fa-envelope"></i><span>Contato</span></a>
+    </aside>
+
+    <div class="main-wrapper">
+      <header>
+        <a href="inicio.html" class="logo-container">
+          <img src="img/BeHealthy.jpg" alt="BeHealthy">
+          <span>BeHealthy</span>
+        </a>
+      </header>
+
+      <div class="main-content">
+        <div class="page-header">
+          <h1>Receitas Saudáveis</h1>
+          <p>Deliciosas, práticas e perfeitas para o seu dia a dia!</p>
+        </div>
+
+        <div class="search-bar">
+          <input type="text" id="busca" placeholder="Buscar receita..." onkeyup="filtrarReceitas()">
+          <i class="fas fa-search"></i>
+        </div>
+
+        <div class="filters">
+          <button class="filter-btn active" data-categoria="Todas" onclick="filtrarCategoria('Todas')">Todas</button>
+          <button class="filter-btn" data-categoria="Café da Manhã" onclick="filtrarCategoria('Café da Manhã')">Café da Manhã</button>
+          <button class="filter-btn" data-categoria="Almoço" onclick="filtrarCategoria('Almoço')">Almoço</button>
+          <button class="filter-btn" data-categoria="Sobremesa" onclick="filtrarCategoria('Sobremesa')">Sobremesa</button>
+          <button class="filter-btn" data-categoria="Bebidas" onclick="filtrarCategoria('Bebidas')">Bebidas</button>
+</div>
+
+        <div class="receitas-grid" id="receitasGrid"></div>
+
+        <!-- Modal -->
+        <div id="modal" class="modal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 id="modalTitulo"></h2>
+              <span class="close" onclick="fecharModal()">×</span>
+            </div>
+            <img id="modalImg" class="modal-img" src="" alt="">
+            <div class="modal-section">
+              <h3>Tempo e Calorias</h3>
+              <p><strong>Tempo:</strong> <span id="modalTempo"></span> | <strong>Calorias:</strong> <span id="modalCalorias"></span></p>
+            </div>
+            <div class="modal-section">
+              <h3>Ingredientes</h3>
+              <ul id="modalIngredientes"></ul>
+            </div>
+            <div class="modal-section">
+              <h3>Modo de Preparo</h3>
+              <ol id="modalPreparo"></ol>
+            </div>
+            <div class="modal-section">
+              <h3>Dica BeHealthy</h3>
+              <p class="dica" id="modalDica"></p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- FOOTER com id="contato" -->
+      <footer id="contato">
+        <div class="footer-container">
+          <div class="footer-brand">
+            <a href="inicio.html" class="logo-container">
+              <img src="img/BeHealthy.jpg" alt="BeHealthy">
+              <span>BeHealthy</span>
+            </a>
+            <p class="slogan">Pequenas mudanças, grandes resultados</p>
+          </div>
+
+          <div class="footer-links">
+            <h4>Navegação</h4>
+            <ul>
+              <li><a href="inicio.html">Início</a></li>
+              <li><a href="receitas.html">Receitas</a></li>
+              <li><a href="beber.html">Consumo de Água</a></li>
+              <li><a href="inicio.html#quem-somos">Quem Somos</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-contact">
+            <h4>Entre em contato</h4>
+            <ul>
+              <li><i class="fas fa-envelope"></i> behealthy.contato@gmail.com</li>
+              <li><i class="fab fa-instagram"></i> @behealthy.oficial</li>
+              <li><i class="fab fa-whatsapp"></i> (11) 98765-4321</li>
+            </ul>
+          </div>
+
+          <div class="footer-newsletter">
+            <h4>Fique por dentro!</h4>
+            <p>Receba receitas semanais e dicas de hidratação</p>
+            <form class="newsletter-form" id="newsletterForm">
+              <input type="email" id="userEmail" placeholder="Seu e-mail" required>
+              <button type="submit">Quero receber!</button>
+            </form>
+            <p id="newsletterMessage" style="margin-top: 10px; font-size: 0.9rem; color: #a8e6cf; min-height: 1.2em;"></p>
+          </div>
+
+          <div class="footer-bottom">
+              <p>© 2025 <strong>BeHealthy</strong> — Todos os direitos reservados</p>
+              <div class="social-icons">
+                <a href="https://www.instagram.com/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.whatsapp.com/download?lang=pt" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://github.com/?locale=pt-BR" aria-label="GitHub"><i class="fab fa-github"></i></a>
+              </div>
+            <p class="team">Desenvolvido com carinho por Nicole, Brenda, Gustavo, Felipe e David</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <script src="receitas.js"></script>
+</body>
+</html>

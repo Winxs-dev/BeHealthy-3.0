@@ -1,0 +1,748 @@
+/* Reset e configurações globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --verde: #23786f;
+    --azul: #009ea3;
+    --claro: #ecfcf8;
+    --texto: #333;
+    --vermelho: #e74c3c;
+}
+
+body {
+    background: var(--claro);
+    color: var(--texto);
+    min-height: 100vh;
+    display: flex;
+}
+
+/* ==================== LAYOUT PRINCIPAL ==================== */
+.container {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    transition: margin-left 0.3s ease;
+}
+
+/* Sidebar - CORREÇÃO DEFINITIVA */
+.sidebar {
+    width: 80px;
+    background: var(--verde);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 120px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    z-index: 100;
+    transition: width 0.3s;
+    overflow-x: hidden;
+    overflow-y: auto;
+    box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+}
+
+.sidebar:hover {
+    width: 220px;
+}
+
+.sidebar:hover ~ .main-wrapper {
+    margin-left: 220px;
+    width: calc(100% - 220px);
+}
+
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    padding: 18px 0;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+}
+
+.sidebar a i {
+    font-size: 1.5rem;
+}
+
+.sidebar a span {
+    opacity: 0;
+    transition: opacity 0.3s;
+    white-space: nowrap;
+}
+
+.sidebar:hover a span {
+    opacity: 1;
+}
+
+.sidebar a.active,
+.sidebar a:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.sidebar a.active::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 40px;
+    background: white;
+    border-radius: 3px 0 0 3px;
+}
+
+/* CONTEÚDO PRINCIPAL - CORREÇÃO DEFINITIVA */
+.main-wrapper {
+    flex: 1;
+    margin-left: 80px;
+    width: calc(100% - 80px);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    transition: margin-left 0.3s ease, width 0.3s ease;
+}
+
+/* Header */
+header {
+    background: white;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 90;
+    padding: 1.2rem 0;
+    text-align: center;
+    width: 100%;
+}
+
+.logo-container {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: var(--verde);
+    text-decoration: none;
+}
+
+.logo-container img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 40px 30px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.card {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 1000px;
+    margin: 30px auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    font-size: 3rem;
+    color: var(--azul);
+    margin-bottom: 15px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+/* Auth Section */
+/* ====================== NOVO AUTH SECTION ====================== */
+.auth-form {
+  background: #ffffff;
+  padding: 40px 30px;
+  border-radius: 16px;
+  max-width: 500px;
+  margin: 30px auto;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s ease;
+}
+
+.auth-form h2 {
+  font-size: 2.4rem;
+  color: var(--azul);
+  margin-bottom: 10px;
+}
+
+.auth-form .subtitle {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 14px 16px;
+  margin: 12px 0;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: border 0.3s;
+}
+
+.auth-form input:focus {
+  outline: none;
+  border-color: var(--azul);
+}
+
+.btn-primary {
+  background: var(--verde);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1.15rem;
+  margin: 20px 0 10px;
+  transition: all 0.3s;
+}
+
+.btn-primary:hover {
+  background: var(--azul);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 158, 163, 0.3);
+}
+
+.toggle-text {
+  margin-top: 25px;
+  color: #666;
+  font-size: 1rem;
+}
+
+.toggle-text a {
+  color: var(--azul);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.toggle-text a:hover {
+  text-decoration: underline;
+}
+
+/* Responsivo para auth */
+@media (max-width: 480px) {
+  .auth-form {
+    padding: 30px 20px;
+    margin: 20px auto;
+  }
+  
+  .auth-form h2 {
+    font-size: 2rem;
+  }
+}
+
+/* Dados Form */
+#dadosForm {
+    background: #f0fdfc;
+    padding: 25px;
+    border-radius: 16px;
+    margin: 30px auto;
+    max-width: 500px;
+}
+
+#dadosForm input {
+    width: 100%;
+    padding: 14px;
+    margin: 10px 0;
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    font-size: 1rem;
+}
+
+#dadosForm button {
+    background: var(--verde);
+    color: white;
+    border: none;
+    padding: 14px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* Info Usuario */
+#infoUsuario {
+    background: #e8f5e9;
+    padding: 25px;
+    border-radius: 16px;
+    margin: 20px auto;
+    max-width: 700px;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--verde);
+    font-weight: 500;
+}
+
+.btn-editar {
+    background: var(--verde);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn-sair {
+    background: var(--vermelho);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+/* Progress Circle */
+.progress-circle {
+    width: 220px;
+    height: 220px;
+    margin: 40px auto;
+    position: relative;
+}
+
+.progress-circle svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.bg-circle {
+    fill: none;
+    stroke: #e0e0e0;
+    stroke-width: 14;
+}
+
+.progress {
+    fill: none;
+    stroke: var(--azul);
+    stroke-width: 14;
+    stroke-linecap: round;
+    stroke-dasharray: 628;
+    stroke-dashoffset: 628;
+    transition: stroke-dashoffset 0.8s ease;
+}
+
+.progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.progress-text h2 {
+    font-size: 3rem;
+    color: var(--azul);
+    margin: 0;
+}
+
+/* Meta Info */
+.meta-info {
+    background: rgba(35, 120, 111, 0.1);
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    color: var(--verde);
+    margin: 20px 0;
+    display: inline-block;
+}
+
+/* Botões de Água */
+.botoes-agua {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin: 40px 0;
+}
+
+.btn-agua {
+    background: var(--azul);
+    color: white;
+    border: none;
+    padding: 16px 32px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-agua:hover {
+    background: var(--verde);
+    transform: translateY(-3px);
+}
+
+/* Histórico */
+.historico h3 {
+    margin: 40px 0 20px;
+    color: var(--verde);
+}
+
+.historico-list {
+    list-style: none;
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.historico-item {
+    background: #fff;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 4px solid var(--azul);
+}
+
+.btn-delete {
+    background: none;
+    border: none;
+    color: #e74c3c;
+    cursor: pointer;
+    font-size: 1.3rem;
+}
+
+.btn-delete:hover {
+    transform: scale(1.2);
+}
+
+/* Footer */
+footer {
+    background: var(--verde);
+    color: white;
+    padding: 4rem 20px 2rem;
+    margin-top: auto;
+    width: 100%;
+}
+
+.footer-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    text-align: center;
+}
+
+.footer-brand .logo-container {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: white !important;
+    text-decoration: none;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.footer-brand .logo-container span {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.footer-brand img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.slogan {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-top: 0.5rem;
+}
+
+.footer-links h4,
+.footer-contact h4,
+.footer-newsletter h4 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.footer-links ul,
+.footer-contact ul {
+    list-style: none;
+}
+
+.footer-links a,
+.footer-contact a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    line-height: 2.2;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover,
+.footer-contact a:hover {
+    color: white;
+}
+
+.footer-contact i {
+    margin-right: 8px;
+    color: var(--azul);
+}
+
+.footer-newsletter p {
+    margin-bottom: 1rem;
+    opacity: 0.9;
+}
+
+.newsletter-form {
+    margin-top: 1rem;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    max-width: 280px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.newsletter-form input {
+    padding: 12px 16px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+}
+
+.newsletter-form button {
+    padding: 12px 20px;
+    background: var(--azul);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.newsletter-form button:hover {
+    background: #01969e;
+    transform: translateY(-2px);
+}
+
+.footer-bottom {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin-top: 2rem;
+    font-size: 0.95rem;
+}
+
+.social-icons a {
+    font-size: 1.6rem;
+    margin: 0 12px;
+    color: rgba(255, 255, 255, 0.8);
+    transition: 0.3s;
+}
+
+.social-icons a:hover {
+    color: white;
+    transform: translateY(-3px);
+}
+
+.team {
+    margin-top: 0.8rem;
+    opacity: 0.8;
+    font-size: 0.9rem;
+}
+
+/* ==================== RESPONSIVO ==================== */
+@media (max-width: 1024px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    .card {
+        padding: 30px;
+    }
+    .progress-circle {
+        width: 180px;
+        height: 180px;
+        margin: 30px auto;
+    }
+    
+    .progress-circle svg {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .progress-circle circle {
+        cx: 90;
+        cy: 90;
+        r: 80;
+    }
+    
+    .progress-text h2 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        min-height: 80px;
+        padding-top: 20px;
+        flex-direction: row;
+        justify-content: center;
+        gap: 15px;
+    }
+    
+    .sidebar:hover {
+        width: 100%;
+    }
+    
+    .sidebar:hover ~ .main-wrapper {
+        margin-left: 0;
+        width: 100%;
+    }
+    
+    .sidebar a {
+        padding: 15px 10px;
+        flex: 1;
+        max-width: 100px;
+    }
+    
+    .sidebar a span {
+        display: none;
+    }
+    
+    .main-wrapper {
+        margin-left: 0 !important;
+        width: 100% !important;
+    }
+    
+    h1 {
+        font-size: 2.2rem;
+    }
+    
+    .card {
+        padding: 25px 20px;
+        margin: 20px auto;
+    }
+    
+    .botoes-agua {
+        gap: 10px;
+    }
+    
+    .btn-agua {
+        padding: 14px 25px;
+        font-size: 1rem;
+    }
+    
+    .progress-circle {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .progress-text h2 {
+        font-size: 2.2rem;
+    }
+    
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .card {
+        padding: 20px 15px;
+    }
+    
+    .botoes-agua {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn-agua {
+        width: 100%;
+        max-width: 250px;
+    }
+    
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}
+    /* ==================== MELHORIAS RESPONSIVAS PARA O CIRCULO DE PROGRESSO ==================== */
+@media (max-width: 768px) {
+    .progress-circle {
+        width: 180px;
+        height: 180px;
+        margin: 30px auto;
+    }
+    
+    .progress-circle svg {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .progress-circle circle {
+        cx: 90;
+        cy: 90;
+        r: 80;
+    }
+    
+    .progress-text h2 {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .progress-circle {
+        width: 160px;
+        height: 160px;
+        margin: 25px auto;
+    }
+    
+    .progress-circle circle {
+        cx: 80;
+        cy: 80;
+        r: 70;
+    }
+    
+    .progress-text h2 {
+        font-size: 2rem;
+    }
+    
+    .progress-text p {
+        font-size: 0.9rem;
+    }
+}

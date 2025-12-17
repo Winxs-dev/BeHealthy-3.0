@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BeHealthy - Água Diária + IMC</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <!-- Nosso CSS separado -->
+  <link rel="stylesheet" href="beber.css">
+  
+  <!-- EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function() {
+      emailjs.init({
+        publicKey: "U8T9o0N8ACsNPDqYT",
+      });
+    })();
+  </script>
+</head>
+<body id="top">
+  <div class="container">
+    <aside class="sidebar">
+      <a href="inicio.html#top"><i class="fas fa-home"></i><span>Início</span></a>
+      <a href="beber.html" class="active"><i class="fas fa-tint"></i><span>Água</span></a>
+      <a href="receitas.html"><i class="fas fa-utensils"></i><span>Receitas</span></a>
+      <a href="inicio.html#quem-somos"><i class="fas fa-info-circle"></i><span>Quem Somos?</span></a>
+      <a href="#contato"><i class="fas fa-envelope"></i><span>Contato</span></a>
+    </aside>
+
+    <div class="main-wrapper">
+      <header>
+        <a href="inicio.html#top" class="logo-container">
+          <img src="img/BeHealthy.jpg" alt="BeHealthy">
+          <span>BeHealthy</span>
+        </a>
+      </header>
+
+      <div class="main-content">
+        <div class="card">
+          <h1>Controle de Água + IMC</h1>
+          <p class="subtitle">Seus dados ficam salvos para sempre</p>
+
+<div id="authSection">
+  <!-- Tela de Login (visível por padrão) -->
+  <div id="loginForm" class="auth-form">
+    <h2>Faça Login</h2>
+    <p class="subtitle">Acompanhe sua hidratação e IMC</p>
+    
+    <input type="email" id="emailLogin" placeholder="Seu email" required>
+    <input type="password" id="senhaLogin" placeholder="Sua senha" required>
+    
+    <button onclick="login()" class="btn-primary">Entrar</button>
+    
+    <p class="toggle-text">
+      Não tem conta? 
+      <a href="#" onclick="mostrarCadastro(); return false;">Criar uma agora</a>
+    </p>
+  </div>
+
+  <!-- Tela de Cadastro (inicialmente escondida) -->
+  <div id="cadastroForm" class="auth-form" style="display: none;">
+    <h2>Criar sua conta</h2>
+    <p class="subtitle">É rápido e seus dados ficam salvos para sempre</p>
+    
+    <input type="email" id="emailCadastro" placeholder="Seu email" required>
+    <input type="password" id="senhaCadastro" placeholder="Crie uma senha (mín. 6 caracteres)" required>
+    
+    <button onclick="registrar()" class="btn-primary">Criar conta</button>
+    
+    <p class="toggle-text">
+      Já tem conta? 
+      <a href="#" onclick="mostrarLogin(); return false;">Fazer login</a>
+    </p>
+  </div>
+</div>
+
+          <div id="mainApp" style="display:none;">
+            <div id="dadosForm" style="display:none;">
+              <input type="number" id="peso" placeholder="Seu peso (kg)" step="0.1">
+              <input type="number" id="altura" placeholder="Sua altura (cm)" step="1">
+              <button onclick="salvarDadosECalcular()">Salvar Dados e Calcular IMC</button>
+            </div>
+
+            <div id="infoUsuario"></div>
+
+            <div class="progress-circle">
+              <svg>
+                <circle class="bg-circle" cx="110" cy="110" r="100"></circle>
+                <circle class="progress" cx="110" cy="110" r="100" id="progressRing"></circle>
+              </svg>
+              <div class="progress-text">
+                <h2 id="consumido">0.00L</h2>
+                <p>de <span id="meta">0.0</span>L</p>
+              </div>
+            </div>
+
+            <div class="meta-info" id="metaInfo">Carregando...</div>
+
+            <div class="botoes-agua">
+              <button class="btn-agua" onclick="adicionarAgua(0.25)">+250ml</button>
+              <button class="btn-agua" onclick="adicionarAgua(0.5)">+500ml</button>
+              <button class="btn-agua" onclick="adicionarAgua(0.75)">+750ml</button>
+              <button class="btn-agua" onclick="adicionarAgua(1)">+1L</button>
+            </div>
+
+            <div class="historico">
+              <h3>Histórico de Hoje</h3>
+              <ul class="historico-list" id="historicoList"></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer id="contato">
+        <!-- Seu footer completo aqui (igual ao anterior) -->
+        <div class="footer-container">
+          <div class="footer-brand">
+            <a href="inicio.html#top" class="logo-container">
+              <img src="img/BeHealthy.jpg" alt="BeHealthy">
+              <span>BeHealthy</span>
+            </a>
+            <p class="slogan">Pequenas mudanças, grandes resultados</p>
+          </div>
+          <div class="footer-links">
+            <h4>Navegação</h4>
+            <ul>
+              <li><a href="inicio.html#top">Início</a></li>
+              <li><a href="receitas.html">Receitas</a></li>
+              <li><a href="beber.html">Consumo de Água</a></li>
+              <li><a href="inicio.html#quem-somos">Quem Somos</a></li>
+            </ul>
+          </div>
+          <div class="footer-contact">
+            <h4>Entre em contato</h4>
+            <ul>
+              <li><i class="fas fa-envelope"></i> behealthy.contato@gmail.com</li>
+              <li><i class="fab fa-instagram"></i> @behealthy.oficial</li>
+              <li><i class="fab fa-whatsapp"></i> (11) 98765-4321</li>
+            </ul>
+          </div>
+          <div class="footer-newsletter">
+            <h4>Fique por dentro!</h4>
+            <p>Receba receitas semanais e dicas de hidratação</p>
+            <form class="newsletter-form" id="newsletterForm">
+              <input type="email" id="userEmail" placeholder="Seu e-mail" required>
+              <button type="submit">Quero receber!</button>
+            </form>
+            <p id="newsletterMessage" style="margin-top: 10px; font-size: 0.9rem; color: #a8e6cf; min-height: 1.2em;"></p>
+          </div>
+          <div class="footer-bottom">
+              <p>© 2025 <strong>BeHealthy</strong> — Todos os direitos reservados</p>
+              <div class="social-icons">
+                <a href="https://www.instagram.com/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.whatsapp.com/download?lang=pt" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://github.com/?locale=pt-BR" aria-label="GitHub"><i class="fab fa-github"></i></a>
+              </div>
+            <p class="team">Desenvolvido com carinho por Nicole, Brenda, Gustavo, Felipe e David</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+  
+  <!-- Nosso JS separado -->
+  <script type="module" src="beber.js"></script>
+</body>
+</html>

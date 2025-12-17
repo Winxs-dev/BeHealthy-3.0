@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BeHealthy - Saúde & Bem-Estar</title>
+
+  <!-- Fontes -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Nosso CSS separado -->
+  <link rel="stylesheet" href="inicio.css">
+  
+  <!-- EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function() {
+      emailjs.init({
+        publicKey: "U8T9o0N8ACsNPDqYT",
+      });
+    })();
+  </script>
+</head>
+
+<body id="top">
+  <div class="container">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <a href="#top" class="active"><i class="fas fa-home"></i><span>Início</span></a>
+      <a href="beber.html"><i class="fas fa-tint"></i><span>Água</span></a>
+      <a href="receitas.html"><i class="fas fa-utensils"></i><span>Receitas</span></a>
+      <a href="#quem-somos"><i class="fas fa-info-circle"></i><span>Quem Somos</span></a>
+      <a href="#contato"><i class="fas fa-envelope"></i><span>Contato</span></a>
+    </aside>
+
+    <div class="main-wrapper">
+      <!-- HEADER -->
+      <header>
+        <a href="#top" class="logo-container">
+          <img src="img/BeHealthy.jpg" alt="BeHealthy">
+          <span>BeHealthy</span>
+        </a>
+      </header>
+
+      <div class="main-content">
+        <!-- HERO -->
+        <section class="secao-verde">
+          <div class="hero-texto">
+            <h1>Precisa de ajuda com a sua saúde?</h1>
+            <p>O BeHealthy foi criado com o principal objetivo de ajudar àqueles que desejam melhorar a saúde, através do simples e funcional.</p>
+          </div>
+        </section>
+
+        <!-- TÍTULO DAS FEATURES -->
+        <div class="features-title">
+          <h1>O que podemos te oferecer?</h1>
+          <p>Duas ferramentas simples que podem transformar sua vida!</p>
+        </div>
+
+        <!-- CARDS -->
+        <section class="features">
+          <div class="card">
+            <img src="img/comida.jpg" alt="Receitas saudáveis" class="card-img">
+            <div class="card-content">
+              <h2>Receitas</h2>
+              <p>Receitas deliciosas e viciantes, além de saudáveis. Porque comer bem não significa abrir mão de degustar comida saborosa.</p>
+              <a href="receitas.html" class="btn-card">Explorar Receitas</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <img src="img/agua.jpg" alt="Hidratação diária" class="card-img">
+            <div class="card-content">
+              <h2>Consumo diário</h2>
+              <p>Meta diária personalizada, lembretes suaves e histórico completo para você nunca mais esquecer de se hidratar.</p>
+              <a href="beber.html" class="btn-card">Registrar Água</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- QUEM SOMOS -->
+        <section class="secao-branca" id="quem-somos">
+          <h2>Quem somos nós?</h2>
+          <p>Somos uma equipe de alunos de programação e criamos esse site pensando em como ajudar as pessoas com dificuldades que nós mesmos nos deparamos no nosso próprio dia a dia.</p>
+
+          <h3 class="equipe-titulo">Conheça nosso time</h3>
+          <div class="equipe-container">
+            <div class="membro-equipe">
+              <img src="img/celes.jpeg" alt="Felipe Celestino">
+              <p>Felipe Celestino</p>
+            </div>
+            <div class="membro-equipe">
+              <img src="img/bren.jpg" alt="Brenda Gabryella">
+              <p>Brenda Gabryella</p>
+            </div>
+            <div class="membro-equipe">
+              <img src="img/nicoi.jpg" alt="Nicole Daniele">
+              <p>Nicole Daniele</p>
+            </div>
+            <div class="membro-equipe">
+              <img src="img/david.png" alt="David Viana">
+              <p>David Viana</p>
+            </div>
+            <div class="membro-equipe">
+              <img src="img/gustavo.png" alt="Gustavo Reis">
+              <p>Gustavo Reis</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer id="contato">
+          <div class="footer-container">
+            <div class="footer-brand">
+              <a href="#top" class="logo-container">
+                <img src="img/BeHealthy.jpg" alt="BeHealthy">
+                <span>BeHealthy</span>
+              </a>
+              <p class="slogan">Pequenas mudanças, grandes resultados</p>
+            </div>
+
+            <div class="footer-links">
+              <h4>Navegação</h4>
+              <ul>
+                <li><a href="#top">Início</a></li>
+                <li><a href="receitas.html">Receitas</a></li>
+                <li><a href="beber.html">Consumo de Água</a></li>
+                <li><a href="#quem-somos">Quem Somos</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-contact">
+              <h4>Entre em contato</h4>
+              <ul>
+                <li><i class="fas fa-envelope"></i> behealthy.contato@gmail.com</li>
+                <li><i class="fab fa-instagram"></i> @behealthy.oficial</li>
+                <li><i class="fab fa-whatsapp"></i> (11) 98765-4321</li>
+              </ul>
+            </div>
+
+            <div class="footer-newsletter">
+              <h4>Fique por dentro!</h4>
+              <p>Receba receitas semanais e dicas de hidratação</p>
+              <form class="newsletter-form" id="newsletterForm">
+                <input type="email" id="userEmail" placeholder="Seu e-mail" required>
+                <button type="submit">Quero receber!</button>
+              </form>
+              <p id="newsletterMessage" style="margin-top: 10px; font-size: 0.9rem; color: #a8e6cf; min-height: 1.2em;"></p>
+            </div>
+
+            <div class="footer-bottom">
+              <p>© 2025 <strong>BeHealthy</strong> — Todos os direitos reservados</p>
+              <div class="social-icons">
+                <a href="https://www.instagram.com/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.whatsapp.com/download?lang=pt" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://github.com/?locale=pt-BR" aria-label="GitHub"><i class="fab fa-github"></i></a>
+              </div>
+              <p class="team">Desenvolvido com carinho por Nicole, Brenda, Gustavo, Felipe e David</p>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </div>
+    <script src="inicio.js"></script>
+</body>
+</html>
